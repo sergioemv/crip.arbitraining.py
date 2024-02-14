@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Book Explorer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .btn-submit {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn-submit:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Order Book Explorer</h1>
+        <form action="/data" method="post">
+            <div class="form-group">
+                <label for="fiat">Select Fiat Currency:</label>
+                <select name="fiat" id="fiat">
+                    <option value="USD">USD</option>
+                    <option value="BOB">BOB</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="asset">Select Asset:</label>
+                <select name="asset" id="asset">
+                    <option value="USDT">USDT</option>
+                    <option value="USDC">USDC</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="trans_amount">Transaction Amount:</label>
+                <input type="number" name="trans_amount" id="trans_amount" min="1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="payment_method">Select Payment Methods:</label>
+                <select name="payment_methods" id="payment_method" multiple>
+                    <option value="Zinli">Zinli</option>
+                    <option value="WallyTech">WallyTech</option>                    
+                </select>
+            </div>
+
+            <button type="submit" class="btn-submit">Explore Data</button>
+        </form>
+    </div>
+</body>
+</html>

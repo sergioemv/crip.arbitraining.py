@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Display</title>
+    <style>
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .data-table, .data-table th, .data-table td {
+            border: 1px solid black;
+        }
+        .data-table th, .data-table td {
+            padding: 8px;
+            text-align: left;
+        }
+        .data-table th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Data for Payment Method: {{ payment_method }}</h1>
+    <h2>Chart for {{ payment_method }}</h2>
+    <img src="{{ url_for('static', filename=image_path.split('/')[-1]) }}" alt="Data Chart">
+    <h2>Asks</h2>
+    <div>{{ asks_table|safe }}</div>
+    <h2>Bids</h2>
+    <div>{{ bids_table|safe }}</div>
+
+    <a href="/">Back to Home</a>
+</body>
+</html>
