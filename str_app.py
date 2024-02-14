@@ -21,11 +21,27 @@ fiat_options = {
     "EUR": "EUR",
     "GBP": "GBP"
 }
-selected_fiat_label = st.selectbox('Choose a fiat currency:', list(fiat_options.keys()))
+# Ensure the order of keys matches the display order in the select box
+fiat_keys = list(fiat_options.keys())
+
+# Find the index of "🇺🇸 USD" to set it as the default option
+default_fiat_index = fiat_keys.index("USD")
+selected_fiat_label = st.selectbox('Choose the Fiat currency:', fiat_keys, index=default_fiat_index)
+
+# Retrieve the corresponding value from fiat_options
 selected_fiat = fiat_options[selected_fiat_label]
 
-# Create a multi-select list box with labels, and capture the selected labels
-selected_labels = st.multiselect('Choose one or more payment methods:', payment_method_labels)
+# Determine default payment methods based on selected fiat currency
+default_payment_methods = []
+if selected_fiat == "USD":
+    # Set default payment methods for USD
+    default_payment_methods = ["Zinli", "Wally Tech", "Dukascopy Bank"]
+elif selected_fiat == "BOB":
+    default_payment_methods = ["Banco Ganadero", "Banco Economico","Banco de Credito","Banco Union","Banco Nacional de Bolivia","Banco Mercantil Santa Cruz","SoliPagos", "Tigo Money", "Bank Transfer"]
+
+
+# Create a multi-select list box for payment methods with labels, and capture the selected labels
+selected_labels = st.multiselect('Choose one or more payment methods:', options=payment_method_labels, default=default_payment_methods)
 
 # Map selected labels back to their corresponding values
 selected_values = [payment_method_value_map[label] for label in selected_labels if label in payment_method_value_map]
