@@ -1,1 +1,6 @@
-pandas requests matplotlib seaborn flask streamlit
+pandas 
+requests 
+matplotlib 
+seaborn 
+flask 
+streamlit
